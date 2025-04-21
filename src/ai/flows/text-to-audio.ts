@@ -59,9 +59,9 @@ const textToAudioFlow = ai.defineFlow<
     try {
       const audioUrl = await textToMorseAudio(input.text);
       return { audioUrl };
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error converting text to audio:", error);
-      throw new Error("Failed to convert text to audio.");
+      throw new Error(`Failed to convert text to audio: ${error.message}`);
     }
   }
 );
