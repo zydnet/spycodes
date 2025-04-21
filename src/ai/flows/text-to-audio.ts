@@ -1,7 +1,7 @@
 'use server';
 
 /**
- * @fileOverview Converts text to Morse code audio using an external API.
+ * @fileOverview Converts text to Morse code audio using an external API and saves it to Firebase Storage.
  *
  * - textToAudio - A function that handles the text to audio conversion process.
  * - TextToAudioInput - The input type for the textToAudio function.
@@ -11,6 +11,7 @@
 import { ai } from '@/ai/ai-instance';
 import { z } from 'genkit';
 import { textToMorseAudio } from '@/services/pollytts';
+import { uploadToFirebase } from '@/services/firebase';
 
 const TextToAudioInputSchema = z.object({
   text: z.string().describe('The text to convert to Morse code audio.'),
@@ -58,7 +59,13 @@ const textToAudioFlow = ai.defineFlow<
   async input => {
     try {
       const audioUrl = await textToMorseAudio(input.text);
-      return { audioUrl };
+      // Generate a unique filename for Firebase Storage
+      const filename = `morse-audio-${Date.now()}.mp3`;
+
+      // Upload the audio to Firebase Storage
+      const uploadedUrl = await uploadToFirebase(audioUrl, filename);
+
+      return { audioUrl: uploadedUrl };
     } catch (error: any) {
       console.error("Error converting text to audio:", error);
       throw new Error(`Failed to convert text to audio: ${error.message}`);
