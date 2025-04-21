@@ -10,7 +10,7 @@ export default function Home() {
     <div className="container mx-auto py-10">
       <h1 className="text-3xl font-semibold mb-5 text-center">Cryptic Decoder</h1>
 
-      <Tabs defaultvalue="textToMorse" className="w-[80%] mx-auto">
+      <Tabs defaultValue="textToMorse" className="w-[80%] mx-auto">
         <TabsList>
           <TabsTrigger value="textToMorse">Text to Morse</TabsTrigger>
           <TabsTrigger value="morseToText">Morse to Text</TabsTrigger>
@@ -29,3 +29,4 @@ export default function Home() {
     </div>
   );
 }
+
