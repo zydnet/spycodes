@@ -80,11 +80,11 @@ body {
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    --background: 240 10% 14%;
-    --foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --secondary: 240 5% 52%;
-    --accent: 180 100% 75%;
+    --background: 30 13% 18%; /* Dark grey */
+    --foreground: 0 0% 98%; /* Light grey */
+    --primary: 240 1% 20%; /* Darker grey */
+    --secondary: 0 0% 70%; /* Light grey */
+    --accent: 167 100% 75%; /* Electric blue */
     --text-to-morse-bg: #444444;
     --morse-to-text-bg: #555555;
     --audio-to-text-bg: #666666;
